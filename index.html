@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un detalle para ti ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            font-family: 'Open Sans', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 0.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        p {
+            font-size: 1.2em;
+            color: #fff;
+            max-width: 600px;
+            margin: 0 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2em;
+            margin-top: 2em;
+            max-width: 500px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.8s ease;
+        }
+        
+        .card.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        button {
+            margin-top: 2em;
+            padding: 0.8em 1.5em;
+            background-color: #c94f7c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+        
+        button:hover {
+            background-color: #a73d64;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .heart {
+            width: 20px;
+            height: 20px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Red_heart_icon.svg') no-repeat center/contain;
+            position: absolute;
+            animation: float 6s infinite ease-in;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hearts"></div>
+
+    <h1>💕 Para ti, con todo mi cariño 💕</h1>
+    <p>En este rincón del universo digital, quiero recordarte lo especial que eres para mí.</p>
+
+    <button onclick="showCard()">Descubre un mensaje...</button>
+
+    <div class="card" id="hiddenCard">
+        <h2 style="color:#c94f7c; font-family: 'Dancing Script', cursive;">Siempre en mi corazón</h2>
+        <p style="color: #5e5e5e;">Tu sonrisa es la melodía que alegra mis días y tu mirada el refugio de mi alma.</p>
+    </div>
+
+    <script>
+        function showCard() {
+            document.getElementById('hiddenCard').classList.add('show');
+        }
+
+        function createHearts() {
+            const heartsContainer = document.querySelector('.hearts');
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+                heart.style.opacity = Math.random();
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        createHearts();
+    </script>
+
+</body>
+
+</html>
